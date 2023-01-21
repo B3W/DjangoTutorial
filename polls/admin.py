@@ -19,6 +19,9 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date']}),
     ]
     inlines = [ChoiceInline]
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
+    list_filter = ['pub_date']         # Adds ability to filter based on 'pub_date' field
+    search_fields = ['question_text']  # Adds ability to search based on 'question_text' field
 
 
 admin.site.register(Question, QuestionAdmin)  # Tells admin that Question objects have an admin interface
